@@ -1,0 +1,26 @@
+### Create User
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "Aman",
+  "email": "aman@gmail.com",
+  "password": "1234"
+}
+
+### Get Users
+GET http://localhost:8080/users
+
+### Create Expense
+POST http://localhost:8080/expenses/user/1
+Content-Type: application/json
+
+{
+  "title": "Lunch",
+  "amount": 200,
+  "category": "Food",
+  "date": "2026-02-26"
+}
+
+### Get Expenses
+GET http://localhost:8080/expenses/user/1
