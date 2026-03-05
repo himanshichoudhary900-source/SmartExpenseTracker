@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  eureka-server:
+    build: ./microservices/eureka-server
+    ports:
+      - "8761:8761"
+
+  auth-service:
+    build: ./microservices/auth-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+
+  expense-service:
+    build: ./microservices/expense-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+
+  api-gateway:
+    build: ./microservices/api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+      - auth-service
+      - expense-service
